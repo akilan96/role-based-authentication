@@ -5,8 +5,11 @@ services:
     build: ./backend
     ports:
       - "4500:4500"
-    env_file:
-      - ./backend/.env
+    environment:
+      - MONGO_URI=mongodb+srv://ourpremium0_db_user:Akilan123@cluster0.adzhtgu.mongodb.net/role-auth
+      - PORT=4500
+      - SECRET=AKI
+      - REFRESH=KABI
 
   frontend:
     build: ./frontend/client
@@ -14,4 +17,6 @@ services:
       - "5173:5173"
     depends_on:
       - backend
-      
+    environment:
+      - VITE_API_URL=http://backend:4500
+   
