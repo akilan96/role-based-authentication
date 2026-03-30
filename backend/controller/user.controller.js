@@ -1,5 +1,8 @@
 import User from "../models/user.model.js";
-import { generateAccessToken, generateRefreshToken } from "../utils/generateTokens.js";
+import {
+  generateAccessToken,
+  generateRefreshToken,
+} from "../utils/generateTokens.js";
 import messageHandler from "../utils/messageHandler.js";
 import jwt from "jsonwebtoken";
 
@@ -36,50 +39,69 @@ export const login = async (req, res) => {
         //   process.env.SECRET,
         //   { expiresIn: "1d" },
         // );
-        const role = isMailPresent.role
-        const accessToken = generateAccessToken({id:isMailPresent._id,role:isMailPresent.role})
-        const refreshToken = generateRefreshToken({id:isMailPresent._id,role:isMailPresent.role})
+        const role = isMailPresent.role;
+        const accessToken = generateAccessToken({
+          id: isMailPresent._id,
+          role: isMailPresent.role,
+        });
+        const refreshToken = generateRefreshToken({
+          id: isMailPresent._id,
+          role: isMailPresent.role,
+        });
 
-        return messageHandler(res, 200, "login-success", {accessToken,refreshToken,role});
+        return messageHandler(res, 200, "login-success", {
+          accessToken,
+          refreshToken,
+          role,
+        });
       }
     }
     if (!isMailPresent) {
-  return messageHandler(res, 400, "User not found");
-}
+      return messageHandler(res, 400, "User not found");
+    }
 
-if (password !== isMailPresent.password) {
-  return messageHandler(res, 400, "Invalid password");
-}
+    if (password !== isMailPresent.password) {
+      return messageHandler(res, 400, "Invalid password");
+    }
   } catch (error) {
     return messageHandler(res, 500, error, error.message);
   }
 };
 
-
-export const about = async(req,res) =>{
+export const about = async (req, res) => {
   try {
-    return messageHandler(res,200,"profile page ok","About Page ==== User & Admin Can Access")
+    return messageHandler(
+      res,
+      200,
+      "profile page ok",
+      "About Page ==== User & Admin Can Access",
+    );
   } catch (error) {
-    return messageHandler(res,500,error.message)
+    return messageHandler(res, 500, error.message);
   }
+};
 
-}
-
-export const profile = async (req,res) =>{
+export const profile = async (req, res) => {
   try {
-    return messageHandler(res,200,"Admin-Dashboard"," Profile Page  ==== Admin Only Access")
+    return messageHandler(
+      res,
+      200,
+      "Admin-Dashboard",
+      " Profile Page  ==== Admin Only Access",
+    );
   } catch (error) {
-    return messageHandler(res,500,error.message)
+    return messageHandler(res, 500, error.message);
   }
-}
+};
 
-export  const logout = async(req,res) =>{
+export const logout = async (req, res) => {
   try {
-
-    req.user = ""
-    return messageHandler(res,200,"logout-sucess")
+    req.user = "siva";
+    req.user = "";
+    console.log("reeeee",req.user);
     
+    // return messageHandler(res, 200, "logout-sucess");
   } catch (error) {
-    return messageHandler(res,500,error.message)
+    return messageHandler(res, 500, error.message);
   }
-}
+};
