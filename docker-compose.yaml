@@ -6,7 +6,7 @@ services:
     ports:
       - "4500:4500"
     environment:
-      - MONGO_URI=mongodb+srv://ourpremium0_db_user:Akilan123@cluster0.adzhtgu.mongodb.net/role-auth
+      - MONGO_URI= mongodb+srv://ourpremium0_db_user:Akilan123@cluster0.adzhtgu.mongodb.net/?appName=Cluster0
       - PORT=4500
       - SECRET=AKI
       - REFRESH=KABI
@@ -18,5 +18,5 @@ services:
     depends_on:
       - backend
     environment:
-      - VITE_API_URL=http://backend:4500
+      - VITE_API_URL=http://13.51.206.44:4500
    
