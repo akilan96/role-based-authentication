@@ -18,5 +18,5 @@ services:
     depends_on:
       - backend
     environment:
-      - VITE_API_URL=http://13.51.206.44:4500
+      - VITE_API_URL=http://16.170.249.100:4500
    
