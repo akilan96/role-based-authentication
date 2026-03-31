@@ -45,7 +45,7 @@ const Login = () => {
       <div className="card w-98 bg-teal-200 card-md shadow-md">
         <div className="card-body">
           <h2 className="card-title mb-3 text-center text-gray-900 text-md font-bold">
-            Login Form
+            Login Form After CI/CD
           </h2>
            <form onSubmit={handleSubmit(onSubmit)}>
           <input type="email" placeholder="Email" className="input  mb-2" {...register("email")} required />
